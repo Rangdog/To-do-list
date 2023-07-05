@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	  <div class="container-fluid">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link active" th:href = "@{/homepage}" >To Do List</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class = "nav-link" th:href="@{/logout}">Logout</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Creat New Student </h1>
+				<div class = "card-body">
+					<form th:action = "@{/save}" th:object = "${task}" method = "POST">
+						<div class = "form-group">
+							<label>Task Name</label>
+							<input type = "text" name = "taskName" th:field = "*{taskName}" class = "form-control" placeholder = "Enter Task Name"/>
+						</div>
+						<div class = "form-group">
+							<label>Task Priority</label>
+							<select th:field = "*{taskPriority}" class="form-control">
+						         <option value="Cao">Cao</option>
+						         <option value="Trung Bình">Trung Bình</option>
+						         <option value="Thấp" selected>Thấp</option>
+						     </select>
+						</div>
+						<div class = "form-group">
+							<label>Task Status</label>
+							<select th:field = "*{taskStatus}" class="form-control">
+						         <option value="Đang làm">Đang làm</option>
+						         <option value="Tạm Dừng">Tạm Dừng</option>
+						         <option value="Xong" selected>Xong</option>
+						     </select>
+						</div>
+						<div class = "form-group">
+							<label>Task Dead Line</label>
+							<input type = "date" name = "taskDeadLine" th:field = "*{taskDeadLine}" class = "form-control" placeholder = "Enter Task Dead Line"/>
+						</div>
+						<div class = "box-footer">
+							<button type = "submit" class = "btn btn-primary">Save</button>
+							 <a class = "btn btn-success" th:href="@{/homepage}">Back</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
